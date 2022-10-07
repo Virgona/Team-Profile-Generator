@@ -2,21 +2,18 @@ const Manager = require('../lib/Manager');
 
 describe('getOfficeNumber', () => {
     it('should return a string of the Managers office number', () => {
-        const officeNumber = "(02)43 612 621";
+        const manager = new Manager('Troy', 3, 'troy@boss.com', '43 8888 888')
 
-        const result = "(02)43 612 621";
-
-        expect(result).toEqual(officeNumber);
+        expect(manager.getOfficeNumber()).toEqual('43 8888 888');
     });
 });
 
 describe('getRole', () => {
     it('should return a string of the Managers role', () => {
-        const role = "Manager";
 
-        const result = "Manager";
+        const manager = new Manager('Troy', 3, 'troy@boss.com', '43 8888 888')
 
-        expect(result).toEqual(role);
+        expect(manager.getRole()).toEqual('Manager');
     });
 });
 

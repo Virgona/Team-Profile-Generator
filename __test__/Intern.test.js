@@ -1,21 +1,18 @@
-const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
 
 describe('getSchool', () => {
     it('should return a string of the Interns school', () => {
-        const education = "USYD";
+        const intern = new Intern('Troy', 2, 'troy@troy.com', 'USYD')
 
-        const result = "USYD";
-
-        expect(result).toEqual(education);
+        expect(intern.getSchool()).toEqual('USYD');
     });
 });
 
 describe('getRole', () => {
     it('should return a string of the Interns role', () => {
-        const role = "Intern";
 
-        const result = "Intern";
+        const intern = new Intern('Troy', 2, 'troy@troy.com', 'USYD')
 
-        expect(result).toEqual(role);
+        expect(intern.getRole()).toEqual('Intern');
     });
 });

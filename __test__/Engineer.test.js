@@ -2,20 +2,16 @@ const Engineer = require('../lib/Engineer');
 
 describe('getGithub', () => {
     it('should return a string of the Engineers Gibhub username', () => {
-        const engGithub = "username";
+        const engineer = new Engineer("troy", 1, "troy@troy.com", "troyboy")
 
-        const result = "username";
-
-        expect(result).toEqual(engGithub);
+        expect(engineer.getGithub()).toEqual("troyboy")
     });
 });
 
 describe('getRole', () => {
     it('should return a string of the Engineers role', () => {
-        const role = "Engineer";
+        const engineer = new Engineer("troy", 1, "troy@troy.com", "troyboy")
 
-        const result = "Engineer";
-
-        expect(result).toEqual(role);
+        expect(engineer.getRole()).toEqual('Engineer');
     });
 });

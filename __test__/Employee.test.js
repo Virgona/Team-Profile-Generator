@@ -3,11 +3,10 @@ const Employee = require('../lib/Employee');
 describe('Employee', () => {
     describe('getName', () => {
         it('should return to a string of the name entered for an Employee', () => {
-            const newEmployeeName = "Troy";
 
-            const result = "Troy";
+            const employee = new Employee("Troy", 1, "Troy@troy.com")
 
-            expect(result).toEqual(newEmployeeName);
+            expect(employee.getName()).toEqual("Troy");
 
         });
     });
@@ -15,30 +14,25 @@ describe('Employee', () => {
 
 describe('getId', () => {
     it('should return a string of the Employees id', () => {
-        const newEmployeeId = "1234";
 
-        const result = "1234";
+        const employee = new Employee('Troy', 1, "troy@troy.com")
 
-        expect(result).toEqual(newEmployeeId);
+        expect(employee.getId()).toEqual(1);
     });
 });
 
 describe('getEmail', () => {
     it('should return a string of the Employees email', () => {
-        const newEmployeeEmail = "troy@troy.com";
+        const employee = new Employee('Troy', 1, "troy@troy.com")
 
-        const result = "troy@troy.com";
-
-        expect(result).toEqual(newEmployeeEmail);
+        expect(employee.getEmail()).toEqual("troy@troy.com");
     });
 });
 
 describe('getRole', () => {
     it('should return a string of the Employees role', () => {
-        const employeeRole = "Employee";
+        const employee = new Employee('Troy', 1, 'troy@troy.com')
 
-        const result = "Employee";
-
-        expect(result).toEqual(employeeRole);
+        expect(employee.getRole()).toEqual('Employee');
     });
 });
