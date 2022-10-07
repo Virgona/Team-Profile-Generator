@@ -6,12 +6,47 @@ const members = [];
 
 const managerQustions = [
     {
-
+        type: 'input',
+        name: 'name',
+        message: 'What is your Managers Name?'
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'What is your Managers Id number?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your Managers email address?',
+        default: 'example@example.com'
+    },
+    {
+        type: 'input',
+        name: 'number',
+        message: 'What is your Managers office contact number?'
     }
 ];
-const createMemberQustions = [];
-const createInternQustions = [];
-const createEngineerQustions = [];
+const createMemberQustions = [
+    {
+        type: 'list',
+        numer: 'team',
+        message: 'Which team member would you like to create next? or exit to create list',
+        choices: ['Engineer', 'Intern', 'Exit']
+    }
+];
+const InternQustions = [
+    'Name?',
+    'Id Number?',
+    'Email?',
+    'What School are they attending?'
+];
+const createEngineerQustions = [
+    'Name?',
+    'Id Number?',
+    'Email?',
+    'Github username?'
+];
 
 // call createManager()
 // ask manager questions
@@ -28,20 +63,37 @@ const createEngineerQustions = [];
 function createManager() {
     inquirer
         .prompt(managerQustions)
-        .then(reponses => {
+        .then(responses => {
+
+            JSON.stringify(responses);
+            members.push(responses);
+            // generateTeam();
 
         })
 }
 
+// function createTeam() {
+//     inquirer
+//         .prompt(createMemberQustions)
+//         .then(response => {
+//             if (response === 'Intern') {
+//                 createInterface();
+//             }
+//             if (response === 'Engineer') {
+//                 createEngineer();
+//             } else generateHtml();
+//         })
+// }
 
-function init() {
-    createManager();
-    inquirer
-        .prompt(managerQustions)
-}
+
+// function init() {
+//     createManager();
+//     inquirer
+//         .prompt(managerQustions)
+// }
 
 
 
 
-
-init()
+createManager()
+// init()
