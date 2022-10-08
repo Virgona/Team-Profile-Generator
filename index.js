@@ -1,6 +1,7 @@
 // grabbing the tools needed
 const inquirer = require('inquirer');
 const fs = require('fs');
+const genHtml = require('./src/html')
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -84,6 +85,14 @@ const engineerQustions = [
         message: 'What is your Engineers github username?'
     }
 ];
+
+function generateHtml(fileName, members) {
+    let html = genHtml(members)
+
+    fs.writeFile(fileName, html, function () {
+        console.log('Team Page Ready!')
+    })
+}
 // initial call that makes the manager and then asks user to create their team or exit
 function createManager() {
     inquirer
@@ -108,7 +117,7 @@ function createTeam() {
                 case 'Intern':
                     return createIntern();
                 case 'Exit':
-                    return generateHtml();
+                    return generateHtml('team.html', members);
             }
 
         })
