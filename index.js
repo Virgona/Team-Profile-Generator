@@ -1,9 +1,14 @@
 // grabbing the tools needed
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
+// array where team members will be stored
 const members = [];
 
+// questions to load on inquirer prompt
 const managerQustions = [
     {
         type: 'input',
@@ -30,70 +35,110 @@ const managerQustions = [
 const createMemberQustions = [
     {
         type: 'list',
-        numer: 'team',
+        name: 'team',
         message: 'Which team member would you like to create next? or exit to create list',
         choices: ['Engineer', 'Intern', 'Exit']
     }
 ];
-const InternQustions = [
-    'Name?',
-    'Id Number?',
-    'Email?',
-    'What School are they attending?'
+const internQustions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is your Interns Name?'
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'What is your Interns Id number?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your Interns email address?'
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What school is your intern enrolled?'
+    }
 ];
-const createEngineerQustions = [
-    'Name?',
-    'Id Number?',
-    'Email?',
-    'Github username?'
+const engineerQustions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is your Engineers Name?'
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'What is your Engineers Id number?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your Engineers email address?'
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is your Engineers github username?'
+    }
 ];
-
-// call createManager()
-// ask manager questions
-// construct a Manager from responses
-// add the manager to memebers
-// call createTeamMember()
-
-// createTeamMember
-// ask to create engineer or intern or halt
-// if response is engineer -> createEngineer() 
-// if response is inter -> createIntern()
-// else generateHtml(members) 
-
+// initial call that makes the manager and then asks user to create their team or exit
 function createManager() {
     inquirer
         .prompt(managerQustions)
         .then(responses => {
 
-            JSON.stringify(responses);
-            members.push(responses);
-            // generateTeam();
+            const teamManager = new Manager(responses.name, responses.id, responses.email, responses.number);
+            members.push(teamManager);
+            createTeam();
 
         })
 }
 
-// function createTeam() {
-//     inquirer
-//         .prompt(createMemberQustions)
-//         .then(response => {
-//             if (response === 'Intern') {
-//                 createInterface();
-//             }
-//             if (response === 'Engineer') {
-//                 createEngineer();
-//             } else generateHtml();
-//         })
-// }
+// asks user if they would like to create intern or engineer or exit - which will take what they have input thus far and create a team profile
+function createTeam() {
+    inquirer
+        .prompt(createMemberQustions)
+        .then(response => {
+            switch (response.team) {
+                case 'Engineer':
+                    return createEngineer();
+                case 'Intern':
+                    return createIntern();
+                case 'Exit':
+                    return generateHtml();
+            }
+
+        })
+}
+
+function createIntern() {
+    inquirer
+        .prompt(internQustions)
+        .then(responses => {
+
+            const newIntern = new Intern(responses.name, responses.id, responses.email, responses.school);
+            members.push(newIntern)
+            createTeam()
+
+        })
+
+}
+function createEngineer() {
+    inquirer
+        .prompt(engineerQustions)
+        .then(responses => {
+
+            const newEngineer = new Engineer(responses.name, responses.id, responses.email, responses.github);
+            members.push(newEngineer)
+            createTeam()
+
+        })
+
+}
 
 
-// function init() {
-//     createManager();
-//     inquirer
-//         .prompt(managerQustions)
-// }
-
-
-
-
+// begins the inquirer process
 createManager()
-// init()
