@@ -92,20 +92,6 @@ function generateHtml(fileName, members) {
 
     fs.writeFile(fileName, html, function () {
         console.log('Team Page Ready!')
-        members.forEach(member => {
-            let managerCardCreator = cardfunction => {
-                return `<div class="card" style="width: 18rem;">
-            <div class="card-header">
-              ${getName(), getRole()}
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">${getId()}</li>
-              <li class="list-group-item">${getEmail()}</li>
-              <li class="list-group-item">${getOffice()}</li>
-            </ul>
-          </div>`
-            }
-        })
     })
 }
 // initial call that makes the manager and then asks user to create their team or exit
