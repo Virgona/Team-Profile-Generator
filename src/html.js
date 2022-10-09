@@ -1,45 +1,45 @@
 managerCardCreator = require('../index')
 
-function renderTeam(members) {
-  if (members === 'Manager') {
+function renderTeam(member) {
+  if (member.getRole() === 'Manager') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${members.Manager.name, members.Manager.role}
+      ${member.name, member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${members.Manager.id}</li>
-      <li class="list-group-item">${members.Manager.email}</li>
-      <li class="list-group-item">${members.Manager.office}</li>
+      <li class="list-group-item">${member.id}</li>
+      <li class="list-group-item">${member.email}</li>
+      <li class="list-group-item">${member.office}</li>
     </ul>
   </div>`
   }
-  if (members === 'Engineer') {
+  if (member.getRole() === 'Engineer') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${members.Engineer.name, members.Engineer.role}
+      ${member.name, member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${members.Engineer.id}</li>
-      <li class="list-group-item">${members.Engineer.email}</li>
-      <li class="list-group-item">${members.Engineer.github}</li>
+      <li class="list-group-item">${member.id}</li>
+      <li class="list-group-item">${member.email}</li>
+      <li class="list-group-item">${member.github}</li>
     </ul>
   </div>`
   }
-  if (members === 'Intern') {
+  if (member.getRole() === 'Intern') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${members.Intern.name, members.Intern.role}
+      ${member.name, member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${members.Intern.id}</li>
-      <li class="list-group-item">${members.Intern.email}</li>
-      <li class="list-group-item">${members.Intern.school}</li>
+      <li class="list-group-item">${member.id}</li>
+      <li class="list-group-item">${member.email}</li>
+      <li class="list-group-item">${member.school}</li>
     </ul>
   </div>`
   }
 }
 
-function generateHtml(data) {
+function generateHtml(members) {
 
   return `<!doctype html>
   <html lang="en">
@@ -57,7 +57,10 @@ function generateHtml(data) {
         <div class="jumbotron">
             <h1 class="display-4">Meet the Team!</h1>
         </div>
-        <div class="team">${renderTeam(members)}</div>
+        <div class="team">${members.map(member => {
+    return renderTeam(member)
+  })
+    }</div>
     
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
