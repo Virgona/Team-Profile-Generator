@@ -4,36 +4,39 @@ function renderTeam(member) {
   if (member.getRole() === 'Manager') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${member.name, member.getRole()}
+    ${member.name}  
+    &#128084; ${member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${member.id}</li>
-      <li class="list-group-item">${member.email}</li>
-      <li class="list-group-item">${member.office}</li>
+      <li class="list-group-item">Id: ${member.id}</li>
+      <li class="list-group-item">Email: <a href="mailto:${member.email}">${member.email}</a></li>
+      <li class="list-group-item">Phone: ${member.office}</li>
     </ul>
   </div>`
   }
   if (member.getRole() === 'Engineer') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${member.name, member.getRole()}
+    ${member.name}  
+    &#128083; ${member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${member.id}</li>
-      <li class="list-group-item">${member.email}</li>
-      <li class="list-group-item">${member.github}</li>
+      <li class="list-group-item">Id: ${member.id}</li>
+      <li class="list-group-item">Email: <a href="mailto:${member.email}">${member.email}</a></li>
+      <li class="list-group-item">Github:<a href=https://github.com/${member.github} target="_blank">${member.github}</li>
     </ul>
   </div>`
   }
   if (member.getRole() === 'Intern') {
     return `<div class="card" style="width: 18rem;">
     <div class="card-header">
-      ${member.name, member.getRole()}
+    ${member.name}  
+    &#129299 ${member.getRole()}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${member.id}</li>
-      <li class="list-group-item">${member.email}</li>
-      <li class="list-group-item">${member.school}</li>
+      <li class="list-group-item">Id: ${member.id}</li>
+      <li class="list-group-item">Email: <a href="mailto:${member.email}">${member.email}</a></li>
+      <li class="list-group-item">School: ${member.school}</li>
     </ul>
   </div>`
   }

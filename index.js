@@ -118,7 +118,6 @@ function createTeam() {
                 case 'Intern':
                     return createIntern();
                 case 'Exit':
-                    console.log(members)
                     return generateHtml('team.html', members);
             }
 
