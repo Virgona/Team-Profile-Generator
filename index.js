@@ -118,7 +118,7 @@ function createTeam() {
                 case 'Intern':
                     return createIntern();
                 case 'Exit':
-                    return generateHtml('team.html', members);
+                    return generateHtml('sample.html', members);
             }
 
         })
@@ -150,6 +150,6 @@ function createEngineer() {
 }
 
 
-// begins the inquirer process
+// begins the application
 createManager()
 module.exports = managerCardCreator

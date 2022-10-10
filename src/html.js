@@ -1,5 +1,5 @@
 managerCardCreator = require('../index')
-
+// renders the team cards to the html depending on how many are input by the user
 function renderTeam(member) {
   if (member.getRole() === 'Manager') {
     return `<div class="card" style="width: 18rem;">
@@ -23,7 +23,7 @@ function renderTeam(member) {
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Id: ${member.id}</li>
       <li class="list-group-item">Email: <a href="mailto:${member.email}">${member.email}</a></li>
-      <li class="list-group-item">Github:<a href=https://github.com/${member.github} target="_blank">${member.github}</li>
+      <li class="list-group-item">Github:<a href=https://github.com/${member.github} target="_blank">${member.github}</a></li>
     </ul>
   </div>`
   }
@@ -41,7 +41,7 @@ function renderTeam(member) {
   </div>`
   }
 }
-
+// generates the html page after the user has input all information
 function generateHtml(members) {
 
   return `<!doctype html>
@@ -71,25 +71,5 @@ function generateHtml(members) {
         </html>`
 }
 
-
-// members.forEach(member => {
-//   let managerCardCreator = cardfunction => {
-//     return `<div class="card" style="width: 18rem;">
-//   <div class="card-header">
-//     ${getName(), getRole()}
-//   </div>
-//   <ul class="list-group list-group-flush">
-//     <li class="list-group-item">${getId()}</li>
-//     <li class="list-group-item">${getEmail()}</li>
-//     <li class="list-group-item">${getOffice()}</li>
-//   </ul>
-// </div>`
-//   }
-// })
-
 module.exports = generateHtml
 
-
-// function that uses if statement to render cards for each role.
-// make a renderTeam() that will have 3 different conditions checking what role
-// then inside of those ifs a function that will render the card then insert the cards to generateHTML
